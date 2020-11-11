@@ -7,6 +7,39 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<meta name="google-site-verification" content="c72T1QyStOKOwEpcO1mKEHju0BIaonxBWxyh_hlvPik" />
 		<link href="styles.css" rel="stylesheet">
+		<script>searchhelper.perform_google = function(){
+
+    if(typeof(google)!='undefined'){
+        google.search.cse.element.render({
+            div: "google-search-results",
+            tag: 'searchresults-only',
+            gname: 'google-results-gname'
+        });
+        var element = google.search.cse.element.getElement('google-results-gname');
+        var query = $('##search-q').val();
+        element.execute(query);
+    }
+};
+
+(function(){
+    // add the google custom stuff:
+    var cx = 'ba173c8149c05e601';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    //gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+})();
+
+window.__gcse = {
+  parsetags: 'explicit',
+  callback: function(){
+    searchhelper.search('all');
+  }
+};
+		</script>
 	</head>
 	<body>
 		<header>
@@ -20,7 +53,8 @@
 		</header>
 		
 		<script async src="https://cse.google.com/cse.js?cx=ba173c8149c05e601"></script>
-<div class="gcse-searchresults-only">
+<div id="google-search-results"></div>
+		
 		
 		<main>
 			<h1>Recipes</h1>
